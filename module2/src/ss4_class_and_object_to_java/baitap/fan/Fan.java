@@ -1,4 +1,4 @@
-package ss4_class_and_object_to_java.baitap.Fan;
+package ss4_class_and_object_to_java.baitap.fan;
 
 public class Fan {
     private static final int SLOW = 1;

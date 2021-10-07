@@ -1,4 +1,4 @@
-package ss4_class_and_object_to_java.baitap.QuadraticEquation;
+package ss4_class_and_object_to_java.baitap.quadraticequation;
 
 public class QuadraticEquation {
     private double a;

@@ -1,9 +1,6 @@
-package ss4_class_and_object_to_java.baitap.StopWatch;
+package ss4_class_and_object_to_java.baitap.stopwatch;
 
-import java.text.Format;
-import java.time.Duration;
 import java.time.LocalTime;
-import java.util.Date;
 
 public class StopWatch {
     private LocalTime startTime;

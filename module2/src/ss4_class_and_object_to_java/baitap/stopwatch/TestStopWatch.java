@@ -1,4 +1,4 @@
-package ss4_class_and_object_to_java.baitap.StopWatch;
+package ss4_class_and_object_to_java.baitap.stopwatch;
 
 public class TestStopWatch {
     public static void main(String[] args) {
