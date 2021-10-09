@@ -4,11 +4,15 @@ import java.util.Scanner;
 
 public class TestCircle {
     public static void main(String[] args) {
+        System.out.println("Ban hay nhap radius cho Circle 1");
         Scanner input = new Scanner(System.in);
-        System.out.println("Ban hay nhap ban kinh duong tron: ");
         double radius = Double.parseDouble(input.nextLine());
+        System.out.println("Ban hay nhap radius cho Circle 2");
+        double radius1 = Double.parseDouble(input.nextLine());
         Circle circle = new Circle(radius);
-        System.out.println("Ban kinh cua duong tron: " +circle.getRadius());
-        System.out.println("Dien tich cua duong tron la: " +circle.getArea());
+        Circle circle1 = new Circle(radius1);
+        System.out.println("Ban kinh cua Circle1: " +circle.getRadius());
+        System.out.println("Ban kinh cua Circle2: " +circle1.getRadius());
+        System.out.println("Dien tich 2 hinh Circle: " +circle.getArea() +" va " +circle1.getArea());
     }
 }
