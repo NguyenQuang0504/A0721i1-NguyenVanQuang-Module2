@@ -1,7 +1,9 @@
 package ss4_class_and_object_to_java.baitap.stopwatch;
 
+import java.util.concurrent.TimeUnit;
+
 public class TestStopWatch {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         int array[];
         int count;
         array = new int[100000];
@@ -10,6 +12,8 @@ public class TestStopWatch {
         //Hien thi thoi gian bat dau
         stopwatch.start();
         System.out.println("Thoi gian bat dau thuat toan: " + stopwatch.getStartTime());
+        //Ham delay 2s
+        TimeUnit.SECONDS.sleep(2);
         //Thuat toan doi cho 100000 so
         for (int i = 0; i < 100000; i++) {
             array[i] = i;

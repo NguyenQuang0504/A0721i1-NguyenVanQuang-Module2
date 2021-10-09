@@ -1,32 +1,31 @@
 package ss4_class_and_object_to_java.baitap.stopwatch;
 
-import java.time.LocalTime;
 
 public class StopWatch {
-    private LocalTime startTime;
-    private LocalTime endTime;
+    private long startTime;
+    private long endTime;
 
     public StopWatch() {
-        this.startTime = java.time.LocalTime.now();
+        this.startTime = System.currentTimeMillis();
     }
 
-    public LocalTime getStartTime() {
+    public long getStartTime() {
         return startTime;
     }
 
-    public LocalTime getEndTime() {
+    public long getEndTime() {
         return endTime;
     }
 
     public void start() {
-        this.startTime = java.time.LocalTime.now();
+        this.startTime = System.currentTimeMillis();
     }
 
     public void stop() {
-        this.endTime = java.time.LocalTime.now();
+        this.endTime = System.currentTimeMillis();
     }
 
     public String getElapsedTime() {
-        return endTime.getHour() - startTime.getHour() + " : " + (endTime.getMinute() - startTime.getMinute()) + " : " + (endTime.getSecond() - startTime.getSecond()) + " : " + (endTime.getNano() - startTime.getNano());
+        return "Ket qua thuc thi chuong trinh la: " +(getEndTime()-getStartTime());
     }
 }
