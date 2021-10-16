@@ -22,6 +22,6 @@ public class Shape {
         this.filled = filled;
     }
     public String toString(){
-        return "A Shape with color of " +this.color +" and"  +"filled " +this.filled;
+        return "A Shape with color of " +this.color +" and"  +" filled " +this.filled;
     }
 }
