@@ -1,6 +1,8 @@
 package ss6_inheritance.thuchanh;
 
-public class Shape {
+import ss7_abstract_and_interface.baitap.trien_khai_interface_resizeable_cho_cac_lop_hinh_hoc.Resizeable;
+
+public class Shape implements Resizeable {
     private String color = "blue";
     private boolean filled = true;
     public Shape(){
@@ -24,4 +26,10 @@ public class Shape {
     public String toString(){
         return "A Shape with color of " +this.color +" and"  +" filled " +this.filled;
     }
+
+    @Override
+    public void resize(double percent) {
+
+    }
+
 }
