@@ -1,6 +1,6 @@
 package Template.model;
 
-public class Student extends Person {
+public class Student extends Person implements Comparable<Student> {
     private double scores;
     private String subject;
     public Student(){
@@ -34,5 +34,13 @@ public class Student extends Person {
                 ", age=" + age +
                 ", address='" + address + '\'' +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Student o) {
+        if (this.getName().compareTo(o.getName())==0){
+            return this.getAge()-o.getAge();
+        }
+        return this.getName().compareTo(o.getName());
     }
 }
