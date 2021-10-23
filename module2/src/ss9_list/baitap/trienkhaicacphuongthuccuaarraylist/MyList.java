@@ -10,12 +10,12 @@ public class MyList<E> {
 
     //Phuong thuc khoi tao khong tham so cai dat mang mac dinh 10 pt
     public MyList() {
-        element = (E[]) new Objects[DEFAULT_CAPACITY];
+        element = (E[]) new Object[DEFAULT_CAPACITY];
     }
 
     // Phuong thuc khoi tao 1 tham so capacity khoi tao mot object co so luong phan tu la capacity
     public MyList(int capacity) {
-        element = (E[]) new Objects[capacity];
+        element = (E[]) new Object[capacity];
     }
 
     // Phuong thuc size tra ve size la so phan tu hien co cua object
