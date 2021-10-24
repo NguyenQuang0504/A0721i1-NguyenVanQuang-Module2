@@ -2,11 +2,13 @@ package Template.service;
 
 import Template.model.Student;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class ServiceStudent {
     private Scanner input = new Scanner(System.in);
-    public Student studentList[] = new Student[100];
+    public ArrayList<Student> studentList = new ArrayList<>();
     public void add(){
         System.out.println("Ban hay nhap id:");
         int id = Integer.parseInt(input.nextLine());
@@ -21,24 +23,13 @@ public class ServiceStudent {
         System.out.println("Ban hay nhap subject:");
         String subject = input.nextLine();
         Student student = new Student(id,name,age,address,scores,subject);
-        for(int i=0;i<studentList.length;i++){
-            if(studentList[i]==null){
-                studentList[i] = student;
-                break;
-            }
-        }
+        studentList.add(student);
     }
     public void display(){
         System.out.println("Hien thi danh sach");
-        for(int i=0;i<studentList.length;i++){
-            if(studentList[i]==null){
-                System.out.println("Het sanh sach");
-                break;
+        for(int i=0;i<studentList.size();i++){
+                System.out.println(studentList.get(i));
             }
-            else {
-                System.out.println(studentList[i].toString());
-            }
-        }
     }
     public void Sua(){
         System.out.println("Ban hay nhap id student muon sua: ");
@@ -57,9 +48,10 @@ public class ServiceStudent {
         System.out.println("Ban hay nhap subject:");
         String subject = input.nextLine();
         Student student = new Student(id,name,age,address,scores,subject);
-        for(int i =0;i<studentList.length;i++){
-            if(studentList[i].getId()==id_change){
-                studentList[i] = student;
+        for(int i =0;i<studentList.size();i++){
+            if(studentList.get(i).getId()==id_change){
+                studentList.add(i,student);
+                studentList.remove(i+1);
                 break;
             }
         }
@@ -67,13 +59,11 @@ public class ServiceStudent {
     public void delete(){
         System.out.println("Ban hay nhap id muon xoa");
         int id = Integer.parseInt(input.nextLine());
-        for(int i=0;i<studentList.length;i++){
-            if(studentList[i].getId()==id){
-                for(int j=i; j<studentList.length-1;j++){
-                    studentList[j] = studentList[j+1];
-                }
+        for(int i=0;i<studentList.size();i++){
+            if(studentList.get(i).getId()==id){
+                studentList.remove(i);
                 break;
+                }
             }
         }
-    }
 }
