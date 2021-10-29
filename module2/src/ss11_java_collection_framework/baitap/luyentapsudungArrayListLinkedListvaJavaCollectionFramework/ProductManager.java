@@ -72,7 +72,7 @@ public class ProductManager {
         boolean check = false;
         String name = input.nextLine();
         for(int i = 0;i<listProduct.size();i++){
-            if(listProduct.get(i).getName().endsWith(name)){
+            if(listProduct.get(i).getName().equals(name)){
                 System.out.println("-----------------------------------San pham ban muon tim la!!!!!!--------------------------------------");
                 System.out.println(listProduct.get(i));
                 check = true;
