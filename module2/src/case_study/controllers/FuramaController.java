@@ -1,5 +1,6 @@
 package case_study.controllers;
 
+import case_study.services.CustomerServiceImpl;
 import case_study.services.EmployeeService;
 import case_study.services.EmployeeServiceImpl;
 
@@ -9,6 +10,7 @@ public class FuramaController {
     public static void main(String[] args) {
         boolean check = true;
         EmployeeServiceImpl employees = new EmployeeServiceImpl();
+        CustomerServiceImpl customerList = new CustomerServiceImpl();
         Scanner input = new Scanner(System.in);
         do {
             System.out.println("1.\tEmployee Management\n" +
@@ -38,7 +40,32 @@ public class FuramaController {
                             employees.add();
                             break;
                         case 3:
-                            System.out.println("Edit employee");
+                            System.out.println("-------------------------------------------------------------------Edit employee------------------------------------------------------");
+                            employees.edit();
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                case 2:
+                    System.out.println("---------------------------------------Customer Mannagement--------------------------------");
+                    System.out.println("1.\tDisplay list customers\n" +
+                            "2.\tAdd new customer\n" +
+                            "3.\tEdit customer\n" +
+                            "4.\tReturn main menu\n");
+                    int choisee2 = Integer.parseInt(input.nextLine());
+                    switch (choisee2){
+                        case 1:
+                            System.out.println("---------------------------------------------------------------Display list customers------------------------------------------------------");
+                            customerList.display();
+                            break;
+                        case 2:
+                            System.out.println("----------------------------------------------------------------Add new customers---------------------------------------------------------");
+                            customerList.add();
+                            break;
+                        case 3:
+                            System.out.println("----------------------------------------------------------------Edit customers--------------------------------------------------------------");
+                            customerList.edit();
                             break;
                         default:
                             break;
@@ -106,27 +133,6 @@ public class FuramaController {
                             break;
                         case 2:
                             System.out.println("Display list customer get voucher");
-                            break;
-                        default:
-                            break;
-                    }
-                    break;
-                case 2:
-                    System.out.println("---------------------------------------Customer Mannagement--------------------------------");
-                    System.out.println("1.\tDisplay list customers\n" +
-                            "2.\tAdd new customer\n" +
-                            "3.\tEdit customer\n" +
-                            "4.\tReturn main menu\n");
-                    int choisee2 = Integer.parseInt(input.nextLine());
-                    switch (choisee2){
-                        case 1:
-                            System.out.println("Display list customers");
-                            break;
-                        case 2:
-                            System.out.println("Add new customers");
-                            break;
-                        case 3:
-                            System.out.println("Edit customers");
                             break;
                         default:
                             break;

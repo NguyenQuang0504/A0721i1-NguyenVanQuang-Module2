@@ -8,8 +8,7 @@ import java.util.Scanner;
 public class EmployeeServiceImpl implements EmployeeService{
     Scanner input = new Scanner(System.in);
     public ArrayList<Employee> employeeList = new ArrayList<>();
-    @Override
-    public void add() {
+    public Employee input1(){
         System.out.println("Ban hay nhap id Employee");
         int idEmployee = Integer.parseInt(input.nextLine());
         System.out.println("Ban hay nhap name Employee");
@@ -30,8 +29,10 @@ public class EmployeeServiceImpl implements EmployeeService{
         String positionEmployee = input.nextLine();
         System.out.println("Ban hay nhap salary Employee");
         int salaryEmployee = Integer.parseInt(input.nextLine());
-        Employee employees = new Employee(idEmployee,nameEmployee,dateEmployee,genderEmployee,cmndEmployee,phoneNumberEmployee,emailEmployee,levelEmployee,positionEmployee,salaryEmployee);
-        employeeList.add(employees);
+        return new Employee(idEmployee,nameEmployee,dateEmployee,genderEmployee,cmndEmployee,phoneNumberEmployee,emailEmployee,levelEmployee,positionEmployee,salaryEmployee);
+    }
+    public void add() {
+        employeeList.add(input1());
     }
 
     @Override
@@ -43,6 +44,18 @@ public class EmployeeServiceImpl implements EmployeeService{
 
     @Override
     public void edit() {
-
+        System.out.println("Ban hay nhap id Employee muon edit");
+        boolean check = false;
+        int id = Integer.parseInt(input.nextLine());
+        for(int i = 0;i<employeeList.size();i++){
+            if(employeeList.get(i).getId()==id){
+                employeeList.add(i,input1());
+                employeeList.remove(i+1);
+                check = true;
+            }
+        }
+        if(!check){
+            System.out.println("Ban nhap id khong dung");
+        }
     }
 }
