@@ -1,10 +1,14 @@
 package case_study.controllers;
 
+import case_study.services.EmployeeService;
+import case_study.services.EmployeeServiceImpl;
+
 import java.util.Scanner;
 
 public class FuramaController {
     public static void main(String[] args) {
         boolean check = true;
+        EmployeeServiceImpl employees = new EmployeeServiceImpl();
         Scanner input = new Scanner(System.in);
         do {
             System.out.println("1.\tEmployee Management\n" +
@@ -26,10 +30,12 @@ public class FuramaController {
                     int choisee1 = Integer.parseInt(input.nextLine());
                     switch (choisee1){
                         case 1:
-                            System.out.println("Display list employee");
+                            System.out.println("-------------------------------------------------------------Display list employee-----------------------------------------------");
+                            employees.display();
                             break;
                         case 2:
-                            System.out.println("Add new employee");
+                            System.out.println("---------------------------------------------------------------Add new employee---------------------------------------------------");
+                            employees.add();
                             break;
                         case 3:
                             System.out.println("Edit employee");
