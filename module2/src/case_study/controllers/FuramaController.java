@@ -3,6 +3,7 @@ package case_study.controllers;
 import case_study.services.CustomerServiceImpl;
 import case_study.services.EmployeeService;
 import case_study.services.EmployeeServiceImpl;
+import case_study.services.FacilityServiceImpl;
 
 import java.util.Scanner;
 
@@ -11,6 +12,7 @@ public class FuramaController {
         boolean check = true;
         EmployeeServiceImpl employees = new EmployeeServiceImpl();
         CustomerServiceImpl customerList = new CustomerServiceImpl();
+        FacilityServiceImpl facilityService = new FacilityServiceImpl();
         Scanner input = new Scanner(System.in);
         do {
             System.out.println("1.\tEmployee Management\n" +
@@ -81,6 +83,7 @@ public class FuramaController {
                     switch (choisee3){
                         case 1:
                             System.out.println("Display list facility");
+                            facilityService.display();
                             break;
                         case 2:
                             System.out.println("Add new facility");
