@@ -87,9 +87,11 @@ public class FuramaController {
                             break;
                         case 2:
                             System.out.println("Add new facility");
+                            facilityService.add();
                             break;
                         case 3:
                             System.out.println("Display list facility maintenance");
+                            facilityService.displayMaintenance();
                             break;
                         default:
                             break;

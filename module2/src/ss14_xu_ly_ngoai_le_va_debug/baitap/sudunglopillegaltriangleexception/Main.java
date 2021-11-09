@@ -4,16 +4,16 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        try{
+//        try{
             setTriangle();
-        }
-        catch (ExceptionTriangle e){
-            e.printStackTrace();
-            System.out.println("Chay catch");
-        }
-        finally {
-            System.out.println("Out");
-        }
+//        }
+//        catch (ExceptionTriangle e){
+//            System.out.println(e.getMessage());
+//            System.out.println("Chay catch");
+//        }
+//        finally {
+//            System.out.println("Out");
+//        }
         System.out.println("Dung chuong trinh");
     }
     public static void setTriangle() throws ExceptionTriangle{
@@ -25,10 +25,10 @@ public class Main {
         System.out.println("Ban hay nhap c");
         int c = Integer.parseInt(scanner.nextLine());
         if(a<=0||b<=0||c<=0){
-            throw new ExceptionTriangle("Ban nhap canh tam giac bi sai");
+            throw new ExceptionTriangle("Exception Ban nhap canh tam giac bi sai");
         }
         if(a+b<c||a+c<b||b+c<a){
-            throw new ExceptionTriangle("Ban nhap 3 canh bi sai");
+            throw new ExceptionTriangle("Exception Ban nhap 3 canh bi sai");
         }
     }
 }
