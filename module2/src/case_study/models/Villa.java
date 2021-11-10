@@ -1,5 +1,7 @@
 package case_study.models;
 
+import java.util.Objects;
+
 public class Villa extends Facility {
     private String standradRoom;
     private double AreaPool;
@@ -46,5 +48,20 @@ public class Villa extends Facility {
                 ", AreaPool=" + AreaPool +
                 ", numFloor=" + numFloor +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Villa villa = (Villa) o;
+        return Double.compare(villa.AreaPool, AreaPool) == 0 &&
+                numFloor == villa.numFloor &&
+                Objects.equals(standradRoom, villa.standradRoom);
+    }
+
+    @Override
+    public int hashCode() {
+        return 1;
     }
 }

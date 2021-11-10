@@ -1,10 +1,8 @@
 package case_study.controllers;
 
-import case_study.services.CustomerServiceImpl;
-import case_study.services.EmployeeService;
-import case_study.services.EmployeeServiceImpl;
-import case_study.services.FacilityServiceImpl;
+import case_study.services.*;
 
+import java.awt.print.Book;
 import java.util.Scanner;
 
 public class FuramaController {
@@ -13,6 +11,7 @@ public class FuramaController {
         EmployeeServiceImpl employees = new EmployeeServiceImpl();
         CustomerServiceImpl customerList = new CustomerServiceImpl();
         FacilityServiceImpl facilityService = new FacilityServiceImpl();
+        BookingServiceImpl listBooking = new BookingServiceImpl();
         Scanner input = new Scanner(System.in);
         do {
             System.out.println("1.\tEmployee Management\n" +
@@ -109,18 +108,24 @@ public class FuramaController {
                     switch (choisee4){
                         case 1:
                             System.out.println("Add new booking");
+                            customerList.display();
+                            listBooking.add();
                             break;
                         case 2:
                             System.out.println("Display list booking");
+                            listBooking.display();
                             break;
                         case 3:
                             System.out.println("Create new constracts");
+                            listBooking.create();
                             break;
                         case 4:
                             System.out.println("Display list constracts");
+                            listBooking.displayContact();
                             break;
                         case 5:
                             System.out.println("Edit constracts");
+                            listBooking.edit();
                             break;
                         default:
                             break;

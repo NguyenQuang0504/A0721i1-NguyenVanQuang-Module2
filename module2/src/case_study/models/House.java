@@ -1,5 +1,7 @@
 package case_study.models;
 
+import java.util.Objects;
+
 public class House extends Facility{
     private String standradRoom;
     private int numFloor;
@@ -34,5 +36,19 @@ public class House extends Facility{
                 "standradRoom='" + standradRoom + '\'' +
                 ", numFloor=" + numFloor +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        House house = (House) o;
+        return numFloor == house.numFloor &&
+                Objects.equals(standradRoom, house.standradRoom);
+    }
+
+    @Override
+    public int hashCode() {
+        return 12;
     }
 }

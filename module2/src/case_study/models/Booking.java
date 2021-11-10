@@ -1,6 +1,8 @@
 package case_study.models;
 
-public class Booking {
+import java.util.Comparator;
+
+public class Booking implements Comparable<Booking> {
     private int idBooking;
     private int dateStart;
     private int dateEnd;
@@ -78,5 +80,14 @@ public class Booking {
                 ", nameService='" + nameService + '\'' +
                 ", opctionService='" + opctionService + '\'' +
                 '}';
+    }
+    @Override
+    public int compareTo(Booking o) {
+        if(this.getDateStart()-o.getDateStart()!=0){
+            return this.getDateStart()-o.getDateStart();
+        }
+        else {
+            return this.getDateEnd() - o.getDateEnd();
+        }
     }
 }

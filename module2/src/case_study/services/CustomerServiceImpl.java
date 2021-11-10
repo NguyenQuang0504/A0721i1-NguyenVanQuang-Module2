@@ -1,13 +1,12 @@
 package case_study.services;
 
 import case_study.models.Customer;
-import case_study.models.Employee;
 
 import java.util.LinkedList;
 import java.util.Scanner;
 
 public class CustomerServiceImpl implements CustomerService {
-    LinkedList<Customer> listCustomer = new LinkedList<>();
+    public LinkedList<Customer> listCustomer = new LinkedList<>();
     static Scanner input = new Scanner(System.in);
     public Customer input1(){
         System.out.println("Ban hay nhap id Customer");

@@ -31,13 +31,64 @@ public class FacilityServiceImpl implements FacilityService {
         int choice = Integer.parseInt(scanner.nextLine());
         switch (choice){
             case 2:
-                System.out.println("Add House");
+                System.out.println("-----------------------------------------Add House----------------------");
+                System.out.println("Nhap Name Service");
+                String nameService = scanner.nextLine();
+                System.out.println("Nhap Area");
+                double area = Double.parseDouble(scanner.nextLine());
+                System.out.println("Nhap Price");
+                double price = Double.parseDouble(scanner.nextLine());
+                System.out.println("Nhap maxPeople");
+                int maxPeople = Integer.parseInt(scanner.nextLine());
+                System.out.println("Nhap Rent");
+                String rent = scanner.nextLine();
+                System.out.println("Nhap standradRoom");
+                String standradRoom = scanner.nextLine();
+                System.out.println("Nhap numFloor");
+                int numFloor = Integer.parseInt(scanner.nextLine());
+                System.out.println("Nhap so lan su dung");
+                int num = Integer.parseInt(scanner.nextLine());
+                listMap.put(new House(standradRoom, numFloor, nameService, area, price,maxPeople, rent),num);
                 break;
             case 3:
-                System.out.println("Add Room");
+                System.out.println("----------------------------------------Add Room------------------------------");
+                System.out.println("Nhap Name Service");
+                String nameService1 = scanner.nextLine();
+                System.out.println("Nhap Area");
+                double area1 = Double.parseDouble(scanner.nextLine());
+                System.out.println("Nhap Price");
+                double price1 = Double.parseDouble(scanner.nextLine());
+                System.out.println("Nhap maxPeople");
+                int maxPeople1 = Integer.parseInt(scanner.nextLine());
+                System.out.println("Nhap Rent");
+                String rent1 = scanner.nextLine();
+                System.out.println("Nhap freeService");
+                String freeService = scanner.nextLine();
+                System.out.println("Nhap so lan su dung");
+                int num1 = Integer.parseInt(scanner.nextLine());
+                listMap.put(new Room(freeService, nameService1, area1, price1,maxPeople1, rent1),num1);
                 break;
             case 1:
-                System.out.println("Add Villa");
+                System.out.println("---------------------------------------Add Villa--------------------------------");
+                System.out.println("Nhap Name Service");
+                String nameService2 = scanner.nextLine();
+                System.out.println("Nhap Area");
+                double area2 = Double.parseDouble(scanner.nextLine());
+                System.out.println("Nhap Price");
+                double price2 = Double.parseDouble(scanner.nextLine());
+                System.out.println("Nhap maxPeople");
+                int maxPeople2 = Integer.parseInt(scanner.nextLine());
+                System.out.println("Nhap Rent");
+                String rent2 = scanner.nextLine();
+                System.out.println("Nhap standradRoom");
+                String standradRoom2 = scanner.nextLine();
+                System.out.println("Nhap numFloor");
+                int numFloor2 = Integer.parseInt(scanner.nextLine());
+                System.out.println("Ban hay nhap AreaPool");
+                double areaPool = Double.parseDouble(scanner.nextLine());
+                System.out.println("Nhap so lan su dung");
+                int num2 = Integer.parseInt(scanner.nextLine());
+                listMap.put(new Villa(standradRoom2, areaPool, numFloor2, nameService2, area2, price2, maxPeople2, rent2),num2);
                 break;
             default:
                 break;
@@ -52,17 +103,17 @@ public class FacilityServiceImpl implements FacilityService {
     @Override
     public void edit() {
     }
-//    public void addFacility(){
-//        Scanner scanner = new Scanner(System.in);
-//        System.out.println("Nhap Name Service");
-//        String nameService = scanner.nextLine();
-//        System.out.println("Nhap Area");
-//        double area = Double.parseDouble(scanner.nextLine());
-//        System.out.println("Nhap Price");
-//        double price = Double.parseDouble(scanner.nextLine());
-//        System.out.println("Nhap maxPeople");
-//        int maxPeople = Integer.parseInt(scanner.nextLine());
-//        System.out.println("Nhap Rent");
-//        String rent = scanner.nextLine();
-//    }
+    public void addFacility(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Nhap Name Service");
+        String nameService = scanner.nextLine();
+        System.out.println("Nhap Area");
+        double area = Double.parseDouble(scanner.nextLine());
+        System.out.println("Nhap Price");
+        double price = Double.parseDouble(scanner.nextLine());
+        System.out.println("Nhap maxPeople");
+        int maxPeople = Integer.parseInt(scanner.nextLine());
+        System.out.println("Nhap Rent");
+        String rent = scanner.nextLine();
+    }
 }
