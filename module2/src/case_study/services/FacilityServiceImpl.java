@@ -116,4 +116,11 @@ public class FacilityServiceImpl implements FacilityService {
         System.out.println("Nhap Rent");
         String rent = scanner.nextLine();
     }
+    public void editMaintennance(String nameService){
+        for (Map.Entry<Facility,Integer> list: listMap.entrySet()){
+           if(list.getKey().getNameService().endsWith(nameService)){
+                list.setValue(list.getValue()+1);
+            }
+        }
+    }
 }

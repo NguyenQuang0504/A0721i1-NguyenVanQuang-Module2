@@ -1,15 +1,22 @@
 package case_study.services;
 
 import case_study.models.Booking;
+import case_study.models.Facility;
 
+import java.awt.print.Book;
 import java.util.*;
 
-public class BookingServiceImpl implements BookingService{
+public class BookingServiceImpl implements BookingService {
     Set<Booking> listBooking = new TreeSet<>();
     Queue<Booking> listConstracts = new LinkedList<>();
+    ContractServiceImpl listConstacts2 = new ContractServiceImpl();
+    FacilityServiceImpl facilityService = new FacilityServiceImpl();
     static Scanner scanner = new Scanner(System.in);
-    public void add(){
+
+    public void add() {
         System.out.println("--------------------------------------------Danh sach khach hang va dich vu dang hien co!!!!!!!----------------------------------------");
+        System.out.println("-------------------------- Danh sach dich vu------------------------------------");
+        facilityService.display();
         System.out.println("Nhap id Booking");
         int id = Integer.parseInt(scanner.nextLine());
         System.out.println("Ban hay nhap ngay bat dau book");
@@ -22,29 +29,35 @@ public class BookingServiceImpl implements BookingService{
         String nameService = scanner.nextLine();
         System.out.println("Ban hay nhap opction Service");
         String opctionService = scanner.nextLine();
-        listBooking.add(new Booking(id,dateStart,dateEnd,idCustomer,nameService,opctionService));
+        listBooking.add(new Booking(id, dateStart, dateEnd, idCustomer, nameService, opctionService));
+        facilityService.editMaintennance(nameService);
     }
 
     @Override
     public void display() {
-    for(Booking list: listBooking){
-        System.out.println(list);
-    }
+        for (Booking list : listBooking) {
+            System.out.println(list);
+        }
     }
 
     @Override
     public void edit() {
+        listConstacts2.edit();
     }
 
     @Override
     public void create() {
-    for (Booking list: listBooking){
-        listConstracts.add(list);
-    }
+        for (Booking list : listBooking) {
+            listConstracts.add(list);
+        }
         System.out.println("------------------------------------- Creat Constracts---------------------------------");
+        System.out.println("Cai dat hop dong!!!!!!");
+        System.out.println("Hop dong cho: "+listConstracts.remove());
+        listConstacts2.add();
     }
+
     @Override
     public void displayContact() {
-
+        listConstacts2.display();
     }
 }
