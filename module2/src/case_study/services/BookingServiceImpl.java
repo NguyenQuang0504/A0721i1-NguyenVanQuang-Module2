@@ -1,18 +1,15 @@
 package case_study.services;
 
 import case_study.models.Booking;
-import case_study.models.Facility;
 
-import java.awt.print.Book;
 import java.util.*;
 
 public class BookingServiceImpl implements BookingService {
-    Set<Booking> listBooking = new TreeSet<>();
+    static Set<Booking> listBooking = new TreeSet<>();
     Queue<Booking> listConstracts = new LinkedList<>();
     ContractServiceImpl listConstacts2 = new ContractServiceImpl();
     FacilityServiceImpl facilityService = new FacilityServiceImpl();
     static Scanner scanner = new Scanner(System.in);
-
     public void add() {
         System.out.println("--------------------------------------------Danh sach khach hang va dich vu dang hien co!!!!!!!----------------------------------------");
         System.out.println("-------------------------- Danh sach dich vu------------------------------------");
@@ -23,13 +20,15 @@ public class BookingServiceImpl implements BookingService {
         int dateStart = Integer.parseInt(scanner.nextLine());
         System.out.println("Ban hay nhap ngay ket thuc");
         int dateEnd = Integer.parseInt(scanner.nextLine());
+        System.out.println("Ban hay nhap nam su dung dich vu");
+        int years = Integer.parseInt(scanner.nextLine());
         System.out.println("Ban hay nhap idCustomer");
         int idCustomer = Integer.parseInt(scanner.nextLine());
         System.out.println("Ban hay nhap nameService");
         String nameService = scanner.nextLine();
         System.out.println("Ban hay nhap opction Service");
         String opctionService = scanner.nextLine();
-        listBooking.add(new Booking(id, dateStart, dateEnd, idCustomer, nameService, opctionService));
+        listBooking.add(new Booking(id, dateStart, dateEnd, years, idCustomer, nameService, opctionService));
         facilityService.editMaintennance(nameService);
     }
 
@@ -59,5 +58,8 @@ public class BookingServiceImpl implements BookingService {
     @Override
     public void displayContact() {
         listConstacts2.display();
+    }
+    public Set<Booking> getList(){
+        return listBooking;
     }
 }

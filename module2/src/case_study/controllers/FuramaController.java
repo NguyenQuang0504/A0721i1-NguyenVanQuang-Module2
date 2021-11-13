@@ -12,6 +12,7 @@ public class FuramaController {
         CustomerServiceImpl customerList = new CustomerServiceImpl();
         FacilityServiceImpl facilityService = new FacilityServiceImpl();
         BookingServiceImpl listBooking = new BookingServiceImpl();
+        PromotionServiceImpl listCustomer = new PromotionServiceImpl();
         Scanner input = new Scanner(System.in);
         do {
             System.out.println("1.\tEmployee Management\n" +
@@ -140,6 +141,7 @@ public class FuramaController {
                     switch (choisee5){
                         case 1:
                             System.out.println("Display list customers use service");
+                            listCustomer.display();
                             break;
                         case 2:
                             System.out.println("Display list customer get voucher");

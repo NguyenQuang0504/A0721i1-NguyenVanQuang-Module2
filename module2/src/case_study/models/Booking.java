@@ -9,17 +9,27 @@ public class Booking implements Comparable<Booking> {
     private int idCustomer;
     private String nameService;
     private String opctionService;
+    private int years;
 
-    public Booking(int idBooking, int dateStart, int dateEnd, int idCustomer, String nameService, String opctionService) {
+    public Booking(int idBooking, int dateStart, int dateEnd, int years, int idCustomer, String nameService, String opctionService) {
         this.idBooking = idBooking;
         this.dateStart = dateStart;
         this.dateEnd = dateEnd;
         this.idCustomer = idCustomer;
         this.nameService = nameService;
         this.opctionService = opctionService;
+        this.years = years;
     }
     public Booking(){
 
+    }
+
+    public int getYears() {
+        return years;
+    }
+
+    public void setYears(int years) {
+        this.years = years;
     }
 
     public int getIdBooking() {
@@ -79,8 +89,10 @@ public class Booking implements Comparable<Booking> {
                 ", idCustomer=" + idCustomer +
                 ", nameService='" + nameService + '\'' +
                 ", opctionService='" + opctionService + '\'' +
+                ", years=" + years +
                 '}';
     }
+
     @Override
     public int compareTo(Booking o) {
         if(this.getDateStart()-o.getDateStart()!=0){

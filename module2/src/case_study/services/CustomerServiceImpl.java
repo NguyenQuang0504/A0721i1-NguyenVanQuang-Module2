@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import java.util.Scanner;
 
 public class CustomerServiceImpl implements CustomerService {
-    public LinkedList<Customer> listCustomer = new LinkedList<>();
+    static LinkedList<Customer> listCustomer = new LinkedList<>();
     static Scanner input = new Scanner(System.in);
     public Customer input1(){
         System.out.println("Ban hay nhap id Customer");
@@ -55,5 +55,8 @@ public class CustomerServiceImpl implements CustomerService {
         if(!check){
             System.out.println("Ban nhap id khong dung");
         }
+    }
+    public LinkedList<Customer> getListCustomer(){
+        return listCustomer;
     }
 }
