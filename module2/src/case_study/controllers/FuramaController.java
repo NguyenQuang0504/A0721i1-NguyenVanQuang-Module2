@@ -22,7 +22,8 @@ public class FuramaController {
                     "5.\tPromotion Management\n" +
                     "6.\tExit\n");
             System.out.println("Ban hay chon cac opction");
-            int choisee = Integer.parseInt(input.nextLine());
+            try {
+                int choisee = Integer.parseInt(input.nextLine());
             switch (choisee){
                 case 1:
                     System.out.println("-------------------------------------Employee Mannagement----------------------------------");
@@ -153,6 +154,10 @@ public class FuramaController {
                     break;
                 default:
                     check = false;
+            }
+            }
+            catch (Exception e){
+                e.printStackTrace();
             }
         }
         while (check);

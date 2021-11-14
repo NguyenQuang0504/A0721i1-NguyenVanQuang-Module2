@@ -1,0 +1,3 @@
+Booking{idBooking=1, dateStart=21, dateEnd=29, idCustomer=2, nameService='House', opctionService='adsf', years=2021}
+Booking{idBooking=2, dateStart=21, dateEnd=29, idCustomer=3, nameService='House', opctionService='ddd', years=2020}
+Booking{idBooking=1, dateStart=2, dateEnd=3, idCustomer=3, nameService='sdf', opctionService='cc', years=2121}

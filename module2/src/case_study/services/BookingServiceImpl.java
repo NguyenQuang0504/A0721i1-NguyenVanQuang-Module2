@@ -1,18 +1,18 @@
 package case_study.services;
 
+import case_study.data.WriteAndReadFile;
 import case_study.models.Booking;
 
 import java.util.*;
 
 public class BookingServiceImpl implements BookingService {
+    public static final String LINK_FACILITY = "D:\\A0721i1-NguyenVanQuang-Module2\\module2\\src\\case_study\\data\\facility.csv";
+    WriteAndReadFile writeAndReadFile = new WriteAndReadFile();
     static Set<Booking> listBooking = new TreeSet<>();
     Queue<Booking> listConstracts = new LinkedList<>();
     ContractServiceImpl listConstacts2 = new ContractServiceImpl();
     FacilityServiceImpl facilityService = new FacilityServiceImpl();
-    static {
-        listBooking.add(new Booking(1,15,30,2021,2,"Houe","ADD"));
-        listBooking.add(new Booking(2,10,31,2021,1,"Houe","ADD"));
-    }
+
     static Scanner scanner = new Scanner(System.in);
     public void add() {
         System.out.println("--------------------------------------------Danh sach khach hang va dich vu dang hien co!!!!!!!----------------------------------------");
@@ -32,15 +32,14 @@ public class BookingServiceImpl implements BookingService {
         String nameService = scanner.nextLine();
         System.out.println("Ban hay nhap opction Service");
         String opctionService = scanner.nextLine();
-        listBooking.add(new Booking(id, dateStart, dateEnd, years, idCustomer, nameService, opctionService));
+         Booking booking = new  Booking(id, dateStart, dateEnd, years, idCustomer, nameService, opctionService);
+         writeAndReadFile.writeFile(LINK_FACILITY, booking);
         facilityService.editMaintennance(nameService);
     }
 
     @Override
     public void display() {
-        for (Booking list : listBooking) {
-            System.out.println(list);
-        }
+       writeAndReadFile.readFile(LINK_FACILITY);
     }
 
     @Override
@@ -50,6 +49,7 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public void create() {
+
         for (Booking list : listBooking) {
             listConstracts.add(list);
         }
