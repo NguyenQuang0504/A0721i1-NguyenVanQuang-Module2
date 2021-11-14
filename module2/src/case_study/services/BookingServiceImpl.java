@@ -9,6 +9,10 @@ public class BookingServiceImpl implements BookingService {
     Queue<Booking> listConstracts = new LinkedList<>();
     ContractServiceImpl listConstacts2 = new ContractServiceImpl();
     FacilityServiceImpl facilityService = new FacilityServiceImpl();
+    static {
+        listBooking.add(new Booking(1,15,30,2021,2,"Houe","ADD"));
+        listBooking.add(new Booking(2,10,31,2021,1,"Houe","ADD"));
+    }
     static Scanner scanner = new Scanner(System.in);
     public void add() {
         System.out.println("--------------------------------------------Danh sach khach hang va dich vu dang hien co!!!!!!!----------------------------------------");

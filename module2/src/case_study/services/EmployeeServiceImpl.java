@@ -7,7 +7,12 @@ import java.util.Scanner;
 
 public class EmployeeServiceImpl implements EmployeeService{
     Scanner input = new Scanner(System.in);
-    public ArrayList<Employee> employeeList = new ArrayList<>();
+    public static ArrayList<Employee> employeeList = new ArrayList<>();
+    static {
+        employeeList.add( new Employee(1, "Thuy", 8600, "Nu", 123, 3456, "thuykawaii@gmail.com", "Daihoc", "HH", 30000000));
+        employeeList.add( new Employee(2, "Thuy2", 8600, "Nu", 123, 3456, "thuykawaii@gmail.com", "Daihoc", "HH", 30000000));
+        employeeList.add( new Employee(3, "Thuy3", 8600, "Nu", 123, 3456, "thuykawaii@gmail.com", "Daihoc", "HH", 30000000));
+    }
     public Employee input1(){
         System.out.println("Ban hay nhap id Employee");
         int idEmployee = Integer.parseInt(input.nextLine());

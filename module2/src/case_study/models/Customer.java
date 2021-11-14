@@ -1,6 +1,6 @@
 package case_study.models;
 
-public class Customer extends Person {
+public class Customer extends Person implements Comparable {
     private String levelCustomer;
     private String address;
 
@@ -35,5 +35,10 @@ public class Customer extends Person {
                 "levelCustomer='" + levelCustomer + '\'' +
                 ", address='" + address + '\'' +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return 0;
     }
 }

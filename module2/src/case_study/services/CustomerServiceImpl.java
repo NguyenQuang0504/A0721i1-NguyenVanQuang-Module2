@@ -7,6 +7,11 @@ import java.util.Scanner;
 
 public class CustomerServiceImpl implements CustomerService {
     static LinkedList<Customer> listCustomer = new LinkedList<>();
+    static {
+        listCustomer.add(new Customer(1,"Quang",05042000,"Nam",192130,+8439711,"quang10a30504@gmail.com","Dai hoc","Hue"));
+        listCustomer.add(new Customer(2,"Quang2",05042000,"Nam",192130,+8439711,"quang10a30504@gmail.com","Dai hoc","Hue"));
+        listCustomer.add(new Customer(3,"Quang3",05042000,"Nam",192130,+8439711,"quang10a30504@gmail.com","Dai hoc","Hue"));
+    }
     static Scanner input = new Scanner(System.in);
     public Customer input1(){
         System.out.println("Ban hay nhap id Customer");

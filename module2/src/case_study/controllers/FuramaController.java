@@ -144,6 +144,7 @@ public class FuramaController {
                             listCustomer.display();
                             break;
                         case 2:
+                            listCustomer.getVoucher();
                             System.out.println("Display list customer get voucher");
                             break;
                         default:
