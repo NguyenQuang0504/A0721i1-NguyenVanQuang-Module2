@@ -57,8 +57,8 @@ public class ContractServiceImpl implements ContactService{
 
         for (int i=0;i<getList().size();i++){
             if(getList().get(i).getIdContract()==id){
-                listConstract.add(i,inputAdd());
-                listConstract.remove(i+1);
+                add();
+//                listConstract.remove(i+1);
             }
         }
     }
