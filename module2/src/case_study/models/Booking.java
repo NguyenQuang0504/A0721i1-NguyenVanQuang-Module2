@@ -1,6 +1,5 @@
 package case_study.models;
 
-import java.util.Comparator;
 
 public class Booking implements Comparable<Booking> {
     private int idBooking;
@@ -15,10 +14,10 @@ public class Booking implements Comparable<Booking> {
         this.idBooking = idBooking;
         this.dateStart = dateStart;
         this.dateEnd = dateEnd;
+        this.years = years;
         this.idCustomer = idCustomer;
         this.nameService = nameService;
         this.opctionService = opctionService;
-        this.years = years;
     }
     public Booking(){
 
@@ -81,18 +80,15 @@ public class Booking implements Comparable<Booking> {
     }
 
     @Override
-    public String toString() {
-        return "Booking{" +
-                "idBooking=" + idBooking +
-                ", dateStart=" + dateStart +
-                ", dateEnd=" + dateEnd +
-                ", idCustomer=" + idCustomer +
-                ", nameService='" + nameService + '\'' +
-                ", opctionService='" + opctionService + '\'' +
-                ", years=" + years +
-                '}';
+    public String toString(){
+        return  idBooking +
+                "," + dateStart +
+                "," + dateEnd +
+                "," +years+
+                "," + idCustomer +
+                "," + nameService +
+                "," + opctionService;
     }
-
     @Override
     public int compareTo(Booking o) {
         if(this.getDateStart()-o.getDateStart()!=0){

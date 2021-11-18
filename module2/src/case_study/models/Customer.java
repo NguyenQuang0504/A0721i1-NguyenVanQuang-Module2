@@ -31,10 +31,9 @@ public class Customer extends Person implements Comparable {
 
     @Override
     public String toString() {
-        return "Customer{" +super.toString()+
-                "levelCustomer='" + levelCustomer + '\'' +
-                ", address='" + address + '\'' +
-                '}';
+        return super.toString()+
+                "," + levelCustomer +
+                "," + address ;
     }
 
     @Override

@@ -8,7 +8,6 @@ import java.util.*;
 public class BookingServiceImpl implements BookingService {
     public static final String LINK_FACILITY = "D:\\A0721i1-NguyenVanQuang-Module2\\module2\\src\\case_study\\data\\facility.csv";
     WriteAndReadFile writeAndReadFile = new WriteAndReadFile();
-    static Set<Booking> listBooking = new TreeSet<>();
     Queue<Booking> listConstracts = new LinkedList<>();
     ContractServiceImpl listConstacts2 = new ContractServiceImpl();
     FacilityServiceImpl facilityService = new FacilityServiceImpl();
@@ -33,13 +32,28 @@ public class BookingServiceImpl implements BookingService {
         System.out.println("Ban hay nhap opction Service");
         String opctionService = scanner.nextLine();
          Booking booking = new  Booking(id, dateStart, dateEnd, years, idCustomer, nameService, opctionService);
+// Add vo file
          writeAndReadFile.writeFile(LINK_FACILITY, booking);
         facilityService.editMaintennance(nameService);
     }
 
     @Override
     public void display() {
-       writeAndReadFile.readFile(LINK_FACILITY);
+// Display tu file
+        List<String> list;
+       list = writeAndReadFile.readFile(LINK_FACILITY);
+       for (String list1: list){
+           String array[] = list1.split(",");
+           int idBooking = Integer.parseInt(array[0]);
+           int dateStart = Integer.parseInt(array[1]);
+           int dateEnd = Integer.parseInt(array[2]);
+           int years = Integer.parseInt(array[3]);
+           int idCustomer = Integer.parseInt(array[4]);
+           String nameService = array[5];
+           String opctionService = array[6];
+           Booking booking = new Booking(idBooking,dateStart,dateEnd,years,idCustomer,nameService,opctionService);
+           System.out.println(booking.getIdCustomer());
+       }
     }
 
     @Override
@@ -50,7 +64,7 @@ public class BookingServiceImpl implements BookingService {
     @Override
     public void create() {
 
-        for (Booking list : listBooking) {
+        for (Booking list : getList()) {
             listConstracts.add(list);
         }
         System.out.println("------------------------------------- Creat Constracts---------------------------------");
@@ -64,6 +78,21 @@ public class BookingServiceImpl implements BookingService {
         listConstacts2.display();
     }
     public Set<Booking> getList(){
-        return listBooking;
+        List<String> list;
+        Set<Booking> list2 = new  TreeSet<>();
+        list = writeAndReadFile.readFile(LINK_FACILITY);
+        for (String list1: list){
+            String array[] = list1.split(",");
+            int idBooking = Integer.parseInt(array[0]);
+            int dateStart = Integer.parseInt(array[1]);
+            int dateEnd = Integer.parseInt(array[2]);
+            int years = Integer.parseInt(array[3]);
+            int idCustomer = Integer.parseInt(array[4]);
+            String nameService = array[5];
+            String opctionService = array[6];
+            Booking booking = new Booking(idBooking,dateStart,dateEnd,years,idCustomer,nameService,opctionService);
+            list2.add(booking);
+        }
+        return list2;
     }
 }
