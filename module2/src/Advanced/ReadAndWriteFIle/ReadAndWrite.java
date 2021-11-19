@@ -11,7 +11,7 @@ public class ReadAndWrite<T> {
         FileWriter fileWriter = null;
         BufferedWriter bufferedWriter = null;
         try {
-            fileWriter = new FileWriter(file);
+            fileWriter = new FileWriter(file, false);
             bufferedWriter = new BufferedWriter(fileWriter);
             for (T list1: list){
                 bufferedWriter.write(list1.toString());
