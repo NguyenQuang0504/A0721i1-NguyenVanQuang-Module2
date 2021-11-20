@@ -4,20 +4,23 @@ import case_study.models.Booking;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
-public class WriteAndReadFile {
+public class WriteAndReadFile<T> {
 
     // Ham viet 1 doi tuong Object vao trong file
-    public  void  writeFile(String link, Object o){
+    public  void  writeFile(String link, Collection<T> collection){
         File file = new File(link);
         FileWriter fileWriter = null;
         BufferedWriter bufferedWriter = null;
         try {
-            fileWriter = new FileWriter(file,true);
+            fileWriter = new FileWriter(file);
             bufferedWriter = new BufferedWriter(fileWriter);
-            bufferedWriter.write(o.toString());
-            bufferedWriter.newLine();
+            for (T list: collection) {
+                bufferedWriter.write(list.toString());
+                bufferedWriter.newLine();
+            }
             bufferedWriter.close();
             fileWriter.close();
         } catch (IOException e) {

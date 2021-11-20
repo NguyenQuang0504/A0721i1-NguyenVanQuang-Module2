@@ -12,7 +12,6 @@ public class ContractServiceImpl implements ContactService{
     public static final String PATH = "D:\\A0721i1-NguyenVanQuang-Module2\\module2\\src\\case_study\\data\\contract.csv";
     WriteAndReadFile writeAndReadFile = new WriteAndReadFile();
     static Scanner scanner = new Scanner(System.in);
-    LinkedList<Contract> listConstract = new LinkedList<Contract>();
     public Contract inputAdd() {
         System.out.println("Ban hay nhap id Constracts");
         int idConstracts = Integer.parseInt(scanner.nextLine());
@@ -26,41 +25,46 @@ public class ContractServiceImpl implements ContactService{
         int idCustomer = Integer.parseInt(scanner.nextLine());
         return new  Contract(idConstracts,idBooking,deposit,money,idCustomer);
     }
+    public List<Contract> getConstract(){
+        List<Contract> contractList = new LinkedList<>();
+        List<String> list = writeAndReadFile.readFile(PATH);
+        for(int i=0;i<list.size();i++){
+            String arr[] = list.get(i).split(",");
+            Contract contract = new Contract(Integer.parseInt(arr[0]), Integer.parseInt(arr[1]), Integer.parseInt(arr[2]) , Integer.parseInt(arr[3]),Integer.parseInt(arr[4]));
+            contractList.add(contract);
+        }
+        return contractList;
+    }
     @Override
     public void add(){
-        listConstract.add(inputAdd());
-        for (Contract list: listConstract) {
-            writeAndReadFile.writeFile(PATH, list);
-        }
+        List<Contract> list = new ArrayList<>();
+        list = getConstract();
+        list.add(inputAdd());
+        writeAndReadFile.writeFile(PATH,list);
     }
     @Override
     public void display() {
-        for (String list2: writeAndReadFile.readFile(PATH)){
-            System.out.println(list2);
+        List<Contract> list = new ArrayList<>();
+        list = getConstract();
+        for (Contract list1: list){
+            System.out.println(list1.toString());
         }
-    }
-    public List<Contract> getList(){
-        List<String > list = writeAndReadFile.readFile(PATH);
-        List<Contract> listConstract1 = new ArrayList<>();
-        for (String list1: list){
-            String array[] = list1.split(",");
-            Contract contract = new Contract(Integer.parseInt(array[0]), Integer.parseInt(array[1]),Integer.parseInt(array[2]),Integer.parseInt(array[3]),Integer.parseInt(array[4]));
-            listConstract1.add(contract);
-        }
-        return listConstract1;
     }
     @Override
     public void edit() {
         display();
         System.out.println("Ban hay nhap id Constract muon edit");
         int id = Integer.parseInt(scanner.nextLine());
-
-        for (int i=0;i<getList().size();i++){
-            if(getList().get(i).getIdContract()==id){
-                add();
-//                listConstract.remove(i+1);
+        List<Contract> list = new ArrayList<>();
+        list = getConstract();
+        int size = list.size();
+        for (int i=0;i<size;i++){
+            if(list.get(i).getIdContract()==id){
+                list.add(i,inputAdd());
+                list.remove(i+1);
             }
         }
+        writeAndReadFile.writeFile(PATH,list);
     }
 
 }

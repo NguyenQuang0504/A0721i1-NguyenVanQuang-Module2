@@ -18,10 +18,10 @@ public class PromotionServiceImpl {
 //        listCustomerService.add(new Customer(3,"Quang3",05042000,"Nam",192130,+8439711,"quang10a30504@gmail.com","Dai hoc","Hue"));
     }
     public void display(){
-        Set<Booking>  temp = list.getList();
+        Set<Booking>  temp = (Set<Booking>) list.getListBooking();
         System.out.println("Ban hay nhap nam muon hien thi");
         int years = Integer.parseInt(scanner.nextLine());
-         for (Booking list: list.getList()){
+         for (Booking list: list.getListBooking()){
              if(list.getYears()==years){
                  for (Customer list1: listCustomer.getListCustomer()){
                      if(list1.getId()==list.getIdCustomer()){
@@ -36,10 +36,10 @@ public class PromotionServiceImpl {
          }
     }
     public void getVoucher(){
-        Set<Booking>  temp = list.getList();
+        Set<Booking>  temp = (Set<Booking>) list.getListBooking();
         System.out.println("Ban hay nhap nam muon hien thi");
         int years = Integer.parseInt(scanner.nextLine());
-        for (Booking list: list.getList()){
+        for (Booking list: list.getListBooking()){
             if(list.getYears()==years){
                 for (Customer list1: listCustomer.getListCustomer()){
                     if(list1.getId()==list.getIdCustomer()){
@@ -48,7 +48,7 @@ public class PromotionServiceImpl {
                 }
             }
         }
-        for (Booking list1: list.getList()){
+        for (Booking list1: list.getListBooking()){
             for (Customer list2: listCustomerService){
                 if(list1.getIdCustomer() == list2.getId()){
                     getListCustomerVoucher.push(list2);

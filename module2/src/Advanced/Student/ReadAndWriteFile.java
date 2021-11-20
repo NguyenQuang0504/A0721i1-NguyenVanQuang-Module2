@@ -32,10 +32,17 @@ public class ReadAndWriteFile<T> {
         File file = new File(link);
         FileWriter fileWriter = null;
         BufferedWriter bufferedWriter = null;
+        List<T> list1 = new ArrayList<>();
         try {
+            if(file.length() >0){
+                list1 = (List<T>) readFile(link);
+            }
+            for (T list: collection){
+                list1.add(list);
+            }
             fileWriter = new FileWriter(file);
             bufferedWriter = new BufferedWriter(fileWriter);
-            for (T list: collection){
+            for (T list: list1){
                 bufferedWriter.write(list.toString());
                 bufferedWriter.newLine();
             }

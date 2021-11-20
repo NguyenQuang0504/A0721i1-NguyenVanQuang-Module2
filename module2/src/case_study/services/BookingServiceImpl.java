@@ -1,5 +1,6 @@
 package case_study.services;
 
+import Advanced.ReadAndWriteFIle.Book;
 import case_study.data.WriteAndReadFile;
 import case_study.models.Booking;
 
@@ -13,7 +14,19 @@ public class BookingServiceImpl implements BookingService {
     FacilityServiceImpl facilityService = new FacilityServiceImpl();
 
     static Scanner scanner = new Scanner(System.in);
-    public void add() {
+    // Tra ve list dang co trong file
+    public Queue<Booking> getListBooking(){
+        List<String> listString = writeAndReadFile.readFile(LINK_FACILITY);
+        Queue<Booking> listBooking = new ArrayDeque<>();
+        for (int i=0;i< listString.size();i++){
+            String arr[] = listString.get(i).split(",");
+            Booking booking = new Booking(Integer.parseInt(arr[0]), Integer.parseInt(arr[1]),Integer.parseInt(arr[2]), Integer.parseInt(arr[3]), Integer.parseInt(arr[4]), arr[5], arr[6]);
+            listBooking.add(booking);
+        }
+        return listBooking;
+    }
+
+    public Booking createBooking(){
         System.out.println("--------------------------------------------Danh sach khach hang va dich vu dang hien co!!!!!!!----------------------------------------");
         System.out.println("-------------------------- Danh sach dich vu------------------------------------");
         facilityService.display();
@@ -31,29 +44,25 @@ public class BookingServiceImpl implements BookingService {
         String nameService = scanner.nextLine();
         System.out.println("Ban hay nhap opction Service");
         String opctionService = scanner.nextLine();
-         Booking booking = new  Booking(id, dateStart, dateEnd, years, idCustomer, nameService, opctionService);
+        return new  Booking(id, dateStart, dateEnd, years, idCustomer, nameService, opctionService);
+    }
+    public void add() {
 // Add vo file
-         writeAndReadFile.writeFile(LINK_FACILITY, booking);
-        facilityService.editMaintennance(nameService);
+        Queue<Booking> list = new  ArrayDeque<>();
+        list = getListBooking();
+        list.add(createBooking());
+        writeAndReadFile.writeFile(LINK_FACILITY, list);
+        facilityService.editMaintennance(createBooking().getNameService());
     }
 
     @Override
     public void display() {
 // Display tu file
-        List<String> list;
-       list = writeAndReadFile.readFile(LINK_FACILITY);
-       for (String list1: list){
-           String array[] = list1.split(",");
-           int idBooking = Integer.parseInt(array[0]);
-           int dateStart = Integer.parseInt(array[1]);
-           int dateEnd = Integer.parseInt(array[2]);
-           int years = Integer.parseInt(array[3]);
-           int idCustomer = Integer.parseInt(array[4]);
-           String nameService = array[5];
-           String opctionService = array[6];
-           Booking booking = new Booking(idBooking,dateStart,dateEnd,years,idCustomer,nameService,opctionService);
-           System.out.println(booking.getIdCustomer());
-       }
+        Queue<Booking> list = new ArrayDeque<>();
+        list = getListBooking();
+        for (Booking list1: list){
+            System.out.println(list1.toString());
+        }
     }
 
     @Override
@@ -64,7 +73,7 @@ public class BookingServiceImpl implements BookingService {
     @Override
     public void create() {
 
-        for (Booking list : getList()) {
+        for (Booking list : getListBooking()) {
             listConstracts.add(list);
         }
         System.out.println("------------------------------------- Creat Constracts---------------------------------");
@@ -76,23 +85,5 @@ public class BookingServiceImpl implements BookingService {
     @Override
     public void displayContact() {
         listConstacts2.display();
-    }
-    public Set<Booking> getList(){
-        List<String> list;
-        Set<Booking> list2 = new  TreeSet<>();
-        list = writeAndReadFile.readFile(LINK_FACILITY);
-        for (String list1: list){
-            String array[] = list1.split(",");
-            int idBooking = Integer.parseInt(array[0]);
-            int dateStart = Integer.parseInt(array[1]);
-            int dateEnd = Integer.parseInt(array[2]);
-            int years = Integer.parseInt(array[3]);
-            int idCustomer = Integer.parseInt(array[4]);
-            String nameService = array[5];
-            String opctionService = array[6];
-            Booking booking = new Booking(idBooking,dateStart,dateEnd,years,idCustomer,nameService,opctionService);
-            list2.add(booking);
-        }
-        return list2;
     }
 }
