@@ -1,25 +1,29 @@
-package ss16_binary_file_serialization.baitap.quanlysanphamluurafilenhiphan;
+package Advanced.ReadAndWriteFileBinary;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
-public class ReadAndWriteFile {
-    public void writeFile(String link, List<Product> list){
+public class ReadAndWriteFile<T> {
+// Phuong thuc write Collection<T> vao file
+    public void writeFile(String link, List<T> collection){
         File file = new File(link);
         FileOutputStream fileOutputStream = null;
         ObjectOutputStream objectOutputStream = null;
-//        List<Product> listProduct = new ArrayList<>();
+        List<T> list = new ArrayList<>();
+// Kiem tra xem file cos phan tu thi ghi vao list roi them cac pt cua collection vao va write ra
 //        if(file.length()>0){
-//            listProduct = readFile(link);
+//            list = readFile(link);
 //        }
-//        for(Product list1: list){
-//            listProduct.add(list1);
+//        for(T list1: collection){
+//            list.add(list1);
 //        }
         try {
-            fileOutputStream = new FileOutputStream(file,false);
+            fileOutputStream = new FileOutputStream(file);
             objectOutputStream = new ObjectOutputStream(fileOutputStream);
-            objectOutputStream.writeObject(list);
+                objectOutputStream.writeObject(collection);
             objectOutputStream.close();
             fileOutputStream.close();
         } catch (FileNotFoundException e) {
@@ -28,16 +32,19 @@ public class ReadAndWriteFile {
             e.printStackTrace();
         }
     }
-    public List<Product> readFile(String link){
+    // Phuong thuc ghi file nhi phan tra ve Collection<T>
+    public List<T> readFile(String link){
         File file = new File(link);
-        FileInputStream fileInputStream=null;
+        FileInputStream fileInputStream = null;
         ObjectInputStream objectInputStream = null;
-        List<Product> list = new ArrayList<>();
+        List<T> collection = new ArrayList<>();
         try {
-            if(file.length()>0) { // Phai kiem tra neu file khac rong thi moi khoi tao duoc
+            if(file.length()>0) {
                 fileInputStream = new FileInputStream(file);
                 objectInputStream = new ObjectInputStream(fileInputStream);
-                list = (List<Product>) objectInputStream.readObject();
+                collection = (List<T>) objectInputStream.readObject();
+                objectInputStream.close();
+                fileInputStream.close();
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -46,6 +53,6 @@ public class ReadAndWriteFile {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        return list;
+        return collection;
     }
 }

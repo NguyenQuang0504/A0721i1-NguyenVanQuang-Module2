@@ -17,9 +17,10 @@ public class ServiceProduct {
         System.out.println("Ban hay nhap cost Product");
         int cost = Integer.parseInt(scanner.nextLine());
         Product product = new Product(id,name,cost);
+        listProduct = list.readFile(LINK_PATH);
         listProduct.add(product);
         list.writeFile(LINK_PATH, listProduct);
-        listProduct.remove(0);
+        listProduct.clear();
     }
     public void search(){
         System.out.println("Ban hay nhap ID");
