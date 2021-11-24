@@ -1,10 +1,9 @@
-package Advanced.baitaplamthem.data;
+package thi_module_2.data;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Scanner;
 
 public class ReadAndWriteFile<T> {
     public List<String> readFile(String link){

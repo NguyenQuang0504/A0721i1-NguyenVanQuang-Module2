@@ -3,7 +3,6 @@ import Advanced.baitaplamthem.service.ServiceCar;
 import Advanced.baitaplamthem.service.ServiceMotobike;
 import Advanced.baitaplamthem.service.ServiceVans;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class Main {

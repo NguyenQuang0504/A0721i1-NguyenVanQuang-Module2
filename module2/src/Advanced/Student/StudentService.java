@@ -11,12 +11,19 @@ public class StudentService {
     List<Student> listStudent = new ArrayList<>();
     // CRUD dang binh thuong dung List de luu
     public Student create(){
+        int age =0;
         System.out.println("Ban hay nhap id");
         int id = Integer.parseInt(scanner.nextLine());
         System.out.println("Ban hay nhap name");
         String name = scanner.nextLine();
-        System.out.println("Ban hay nhap age");
-        int age = Integer.parseInt(scanner.nextLine());
+        try {
+            age= setAge();
+        } catch (ageException e) {
+            e.printStackTrace();
+        }
+        finally {
+            System.out.println("Ban da nhap age");
+        }
         System.out.println("Ban hay nhap gender");
         String gender = scanner.nextLine();
         System.out.println("Ban hay nhap subject");
@@ -117,5 +124,13 @@ public class StudentService {
                 System.out.println(list.toString1());
             }
         }
+    }
+    public int setAge() throws ageException {
+        System.out.println("ban hay nhap age");
+        int age = Integer.parseInt(scanner.nextLine());
+        if(age>100){
+            throw new ageException("Nhap sai tuoi");
+        }
+        return age;
     }
 }

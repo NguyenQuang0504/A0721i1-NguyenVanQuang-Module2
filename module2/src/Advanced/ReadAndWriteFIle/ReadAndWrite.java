@@ -2,11 +2,12 @@ package Advanced.ReadAndWriteFIle;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class ReadAndWrite<T> {
     private final String PATH = "D:\\A0721i1-NguyenVanQuang-Module2\\module2\\src\\Advanced\\ReadAndWriteFIle\\data\\Text.csv";
-    public void writeData(List<T> list){
+    public void writeData(Collection<T> list){
         File file = new File(PATH);
         FileWriter fileWriter = null;
         BufferedWriter bufferedWriter = null;
